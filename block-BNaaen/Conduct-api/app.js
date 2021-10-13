@@ -8,13 +8,9 @@ require('dotenv').config();
 
 // connect to db
 
-mongoose.connect(
-  'mongodb://localhost/Conduit-API',
-  { useNewUrlParser: true, useUnifiedTopology: true },
-  (err) => {
-    console.log('Connected', err ? false : true);
-  }
-);
+mongoose.connect("mongodb://localhost/Conduct-api", (err)=>{
+  console.log(err ? err : "connected to database")
+})
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');

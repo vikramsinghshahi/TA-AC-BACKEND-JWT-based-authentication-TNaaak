@@ -12,6 +12,7 @@ router.get('/', async (req, res, next) => {
   let id = req.user.userId;
   try {
     let user = await User.findById(id);
+    console.log(user);
     res.status(200).json({ user: user.displayUser(id) });
   } catch (error) {
     next(error);
@@ -23,6 +24,7 @@ router.put('/', async (req, res, next) => {
   let id = req.user.userId;
   try {
     user = await User.findByIdAndUpdate(id, req.body.user);
+    // console.log(user);
     return res.status(201).json({ user: user.displayUser(id) });
   } catch (error) {
     next(error);
