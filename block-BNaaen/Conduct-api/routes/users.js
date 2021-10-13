@@ -15,7 +15,9 @@ router.get('/', async function (req, res, next) {
 // registration handler
 
 router.post('/register', async (req, res, next) => {
-  let data = req.body.user;
+  // let data = req.body.user;
+  let data = req.body;
+  console.log(data);
   data.following = false;
   if (!data.username || !data.password || !data.email) {
     return res.status(400).json({
@@ -59,7 +61,9 @@ router.post('/login', async (req, res, next) => {
     }
     // generate token
     var token = await user.signToken();
+    console.log(token);
     res.json({ user: user.userJSON(token) });
+    // res.json({ user, token });
   } catch (error) {
     next(error);
   }
